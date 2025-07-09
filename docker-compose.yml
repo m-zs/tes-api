@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  api-prod:
+    container_name: tes-api-prod
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3000
+    env_file:
+      - ./.env
+
+  api-dev:
+    container_name: tes-api-dev
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - 3000:3000
+    env_file:
+      - ./.env
