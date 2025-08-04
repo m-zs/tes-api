@@ -63,4 +63,4 @@ jobs:
 
       - name: Update ECS service
         run: |
-          aws ecs update-service --cluster tes_cluster --service tes-nestjs-service-9yevmxdg --task-definition tes-nestjs --force-new-deployment
+          aws ecs update-service --cluster tes-cluster --service tes-nestjs-service-9yevmxdg --task-definition tes-nestjs --force-new-deployment
