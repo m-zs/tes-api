@@ -1,9 +1,12 @@
 name: Deploy to production
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
-      - cd
+      - main
 
 jobs:
   create-docker-image:
