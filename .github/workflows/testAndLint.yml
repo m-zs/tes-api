@@ -66,6 +66,8 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
+    environment:
+      name: test
     needs: setup
     steps:
       - name: Checkout repository
@@ -90,6 +92,24 @@ jobs:
 
   test-e2e:
     runs-on: ubuntu-latest
+    environment:
+      name: test
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 15
+
     needs: setup
     steps:
       - name: Checkout repository
