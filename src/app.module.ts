@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { APP_PIPE } from '@nestjs/core';
 
 import { DatabaseModule } from '@core/database/database.module';
+import { PasswordService } from '@core/password/password.service';
 import { UsersModule } from '@modules/users/users.module';
 
 import { AppController } from './app.controller';
@@ -27,6 +28,7 @@ import { AppService } from './app.service';
       }),
     },
     AppService,
+    PasswordService,
   ],
 })
 export class AppModule {}
