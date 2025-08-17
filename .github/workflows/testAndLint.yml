@@ -87,6 +87,9 @@ jobs:
             node_modules
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
 
+      - name: Generate Prisma client
+        run: pnpm prisma generate
+
       - name: Run tests
         run: pnpm test
 
